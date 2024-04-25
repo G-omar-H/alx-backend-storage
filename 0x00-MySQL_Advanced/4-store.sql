@@ -1,10 +1,14 @@
--- SQL script that creates a trigger that decreases
---the quantity of an item after adding a new order.
-DROP TRIGGER IF EXISTS store;
-DELIMITER |
-CREATE TRIGGER store AFTER INSERT ON orders
+-- 4-store.sql
+
+-- Create a trigger to decrease item quantity after adding a new order
+DELIMITER //
+
+CREATE TRIGGER decrease_quantity AFTER INSERT ON orders
 FOR EACH ROW
 BEGIN
-  UPDATE items SET quantity = quantity - (NEW.number * 1) WHERE items.name = NEW.item_name;
-END|
+    UPDATE items
+    SET quantity = quantity - NEW.number
+    WHERE name = NEW.item_name;
+END//
+
 DELIMITER ;
