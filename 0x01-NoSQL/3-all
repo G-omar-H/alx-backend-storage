@@ -1,0 +1,2 @@
+// Mongo sctipt to list all documents withing a collection
+db.school.find()
