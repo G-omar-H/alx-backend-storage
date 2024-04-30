@@ -3,6 +3,7 @@
 10-update_topics.py
 """
 
+
 def update_topics(mongo_collection, name, topics):
     """
      Python function that changes all topics of a school document
@@ -13,12 +14,4 @@ def update_topics(mongo_collection, name, topics):
         name (_string): name of a school
         topics (_list): list of topics approached in the school
     """
-    mongo_collection.update_many(
-        {"name": name},
-        {
-            '$set':
-            {
-                'topics': topics
-            }
-        }
-    )
+    mongo_collection.update_many({"name": name}, {"$set": {"topics": topics}})
