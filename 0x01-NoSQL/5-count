@@ -1,0 +1,2 @@
+// mongo script to count number of documents withing a collection
+db.school.find().count()
