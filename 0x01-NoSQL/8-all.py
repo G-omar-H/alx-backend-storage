@@ -1,15 +1,11 @@
-#!/user/bin/env python3
+#!/usr/bin/env python3
 """
-Python function that lists all documents in a collection
+mod doc
 """
-
-import pymongo
 
 
 def list_all(mongo_collection):
     """
-
-
-    Args:
-        mongo_collection (_type_): _description_
+    func doc
     """
+    return list(mongo_collection.find())
