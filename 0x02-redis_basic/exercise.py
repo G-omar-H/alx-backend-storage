@@ -31,9 +31,8 @@ class Cache:
         self._redis.set(key, data)
         return key
 
-    @getter
     def get(
-           self, key: str, fn: Optional[callable]
+           self, key: str, fn: Optional[callable] = None
            ) -> Union[int, str, bytes, float]:
         """
         get method that take a key string argument and an
