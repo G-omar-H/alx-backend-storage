@@ -9,11 +9,12 @@ This project teaches the fundamentals of working with Redis in a Python environm
 ## Installation
 
 1. Install Redis on Ubuntu 18.04 LTS:
-   ```bash
-   sudo apt-get -y install redis-server
-   pip3 install redis
-   sed -i "s/bind .*/bind 127.0.0.1/g" /etc/redis/redis.conf
-   ```
+
+```bash
+sudo apt-get -y install redis-server
+pip3 install redis
+sed -i "s/bind .*/bind 127.0.0.1/g" /etc/redis/redis.conf
+```
 
 2. Clone the repository:
 
@@ -34,17 +35,17 @@ Run the provided examples or test your implementations using the main files or c
 
 ## Tasks
 
-   0. Writing strings to Redis: Store data in Redis using Python.
+   0. <strong>Writing strings to Redis:</strong> Store data in Redis using Python.
 
-   1. Reading from Redis and recovering original type: Retrieve data from Redis and convert it back to its original type.
+   1. <strong>Reading from Redis and recovering original type:</strong> Retrieve data from Redis and convert it back to its original type.
 
-   2. Incrementing values: Implement a system to count how many times methods of the Cache class are called.
+   2. <strong>Incrementing values:</strong> Implement a system to count how many times methods of the Cache class are called.
 
-   3. Storing lists: Store the history of inputs and outputs for a particular function in Redis.
+   3. <strong>Storing lists:</strong> Store the history of inputs and outputs for a particular function in Redis.
 
-   4. Retrieving lists: Display the history of calls of a particular function.
+   4. <strong>Retrieving lists:</strong> Display the history of calls of a particular function.
 
-   5. Implementing an expiring web cache and tracker: Create a web cache with an expiration time and track URL access counts.
+   5. <strong>Implementing an expiring web cache and tracker:</strong> Create a web cache with an expiration time and track URL access counts.
 
 ## Contributing
 
