@@ -8,6 +8,38 @@ from typing import Union, Optional, Callable
 from functools import wraps
 
 
+def call_history(method: Callable) -> Callable:
+    """
+    decorator to store the history of inputs and
+    outputs for a particular function.
+
+    Everytime the original function will be called, we will
+    add its input parameters to one list in redis,
+    and store its output into another list.
+
+    Args:
+        method (Callable): _description_
+
+    Returns:
+        Callable: _description_
+    """
+    inkey = method.__qualname__ + ":inputs"
+    outkey = method.__qualname__ + ":outputs"
+
+    @wraps(method)
+    def history(self, *args, **kwargs):
+        """
+        store the history of inputs and
+        outputs for a particular function.
+        """
+        self._redis.rpush(inkey, str(args))
+        output = method(self, *args, **kwargs)
+        self._redis.rpush(outkey, str(output))
+        return output
+
+    return history
+
+
 def count_calls(method: Callable) -> Callable:
     """
     decorator to count number of times a Cash class method is called
@@ -46,6 +78,7 @@ class Cache:
         self._redis = redis.Redis()
         self._redis.flushdb()
 
+    @call_history
     @count_calls
     def store(self, data: Union[str, bytes, int, float]) -> str:
         """
