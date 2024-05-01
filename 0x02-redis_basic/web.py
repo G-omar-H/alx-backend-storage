@@ -17,6 +17,7 @@ def get_page(url: str) -> str:
     Returns:
         str: content
     """
+    # Initialize Redis client
     redis_client = redis.Redis()
 
     # Increment URL access count
@@ -29,9 +30,12 @@ def get_page(url: str) -> str:
         return cached_content.decode("utf-8")
 
     # Make HTTP request to the URL
+    start_time = time.time()
     response = requests.get(url)
+    end_time = time.time()
 
     # Cache the HTML content with expiration
-    redis_client.setex(url, 10, response.content)
+    if end_time - start_time <= 10:
+        redis_client.setex(url, 10, response.content)
 
     return response.content.decode("utf-8")
