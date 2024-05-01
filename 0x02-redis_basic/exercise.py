@@ -32,7 +32,7 @@ class Cache:
         return key
 
     @getter
-    def get(self, key, fn=None):
+    def get(self, key: str, fn: optional[callable]) -> Union[int, str, bytes]:
         """
         get method that take a key string argument and an
         optional Callable argument named fn.
@@ -43,18 +43,18 @@ class Cache:
 
             fn (_type_, optional): _description_. Defaults to None.
         """
-        if fn is not None and callable(fn):
-            return fn(self._redis.get(key))
-        else:
-            return self._redis.get(key)
+        value = self._redis.get(key)
+        if fn:
+            return fn(value)
+        return value
 
-    def get_str(self, key):
+    def get_str(self, key: str) -> str:
         """
         get value as a string
         """
         return self.get(key, str)
 
-    def get_int(self, key):
+    def get_int(self, key: str) -> int():
         """
         get value as a integer
         """
