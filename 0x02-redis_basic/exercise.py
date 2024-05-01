@@ -32,7 +32,9 @@ class Cache:
         return key
 
     @getter
-    def get(self, key: str, fn: Optional[callable]) -> Union[int, str, bytes]:
+    def get(
+           self, key: str, fn: Optional[callable]
+           ) -> Union[int, str, bytes, float]:
         """
         get method that take a key string argument and an
         optional Callable argument named fn.
