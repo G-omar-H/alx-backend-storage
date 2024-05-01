@@ -17,8 +17,8 @@ class Cache:
         """
         initializer...
         """
-        self.__redis = redis.Redis()
-        self.__redis.flushdb()
+        self._redis = redis.Redis()
+        self._redis.flushdb()
 
     def store(self, data: Union[str, int, bytes, float]) -> uuid:
         """
@@ -28,5 +28,5 @@ class Cache:
             data (_type_): _description_
         """
         red_key = str(uuid.uuid4())
-        self.__redis.set(red_key, data)
+        self._redis.set(red_key, data)
         return red_key
