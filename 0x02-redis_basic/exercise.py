@@ -30,3 +30,32 @@ class Cache:
         key = str(uuid.uuid4())
         self._redis.set(key, data)
         return key
+
+    @getter
+    def get(self, key, fn=None):
+        """
+        get method that take a key string argument and an
+        optional Callable argument named fn.
+        This callable will be used to convert
+        the data back to the desired format.
+
+        Args:
+
+            fn (_type_, optional): _description_. Defaults to None.
+        """
+        if fn and callable(fn):
+            return fn(self._redis.get(key))
+        else:
+            return self._redis.get(key)
+
+    def get_str(self, key):
+        """
+        get value as a string
+        """
+        return self.get(key, str)
+
+    def get_int(self, key):
+        """
+        get value as a integer
+        """
+        return self.get(key, int)
