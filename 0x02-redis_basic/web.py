@@ -35,12 +35,3 @@ def get_page(url: str) -> str:
     redis_client.setex(url, 10, response.content)
 
     return response.content.decode("utf-8")
-
-
-# Example usage
-if __name__ == "__main__":
-    # Test the function with a URL
-    url = "http://slowwly.robertomurray.co.uk/\
-        delay/5000/url/http://www.example.com"
-    html_content = get_page(url)
-    print(html_content)
