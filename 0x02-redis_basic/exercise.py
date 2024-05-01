@@ -40,6 +40,23 @@ def call_history(method: Callable) -> Callable:
     return history
 
 
+def replay(method: Callable) -> None:
+    """doc doc class"""
+    input_key = "{}:inputs".format(method.__qualname__)
+    output_key = "{}:outputs".format(method.__qualname__)
+
+    inputs = method.__self__._redis.lrange(input_key, 0, -1)
+    outputs = method.__self__._redis.lrange(output_key, 0, -1)
+
+    print("{} was called {} times:".format(method.__qualname__, len(inputs)))
+    for inp, out in zip(inputs, outputs):
+        print(
+            "{}(*{}) -> {}".format(
+                method.__qualname__, inp.decode("utf-8"), out.decode("utf-8")
+            )
+        )
+
+
 def count_calls(method: Callable) -> Callable:
     """
     decorator to count number of times a Cash class method is called
