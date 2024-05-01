@@ -53,10 +53,10 @@ class Cache:
         """
         get value as a string
         """
-        return self.get(key, str)
+        return self.get(key, fn=str)
 
     def get_int(self, key: str) -> int():
         """
         get value as a integer
         """
-        return self.get(key, int)
+        return self.get(key, fn=int)
