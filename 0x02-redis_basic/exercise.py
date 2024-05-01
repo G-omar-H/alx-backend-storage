@@ -4,7 +4,7 @@ Main file
 """
 import redis
 import uuid
-from typing import Union
+from typing import Union, Optional
 
 
 class Cache:
@@ -32,7 +32,7 @@ class Cache:
         return key
 
     @getter
-    def get(self, key: str, fn: optional[callable]) -> Union[int, str, bytes]:
+    def get(self, key: str, fn: Optional[callable]) -> Union[int, str, bytes]:
         """
         get method that take a key string argument and an
         optional Callable argument named fn.
