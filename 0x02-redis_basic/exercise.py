@@ -43,7 +43,7 @@ class Cache:
 
             fn (_type_, optional): _description_. Defaults to None.
         """
-        if fn and callable(fn):
+        if fn is not None and callable(fn):
             return fn(self._redis.get(key))
         else:
             return self._redis.get(key)
