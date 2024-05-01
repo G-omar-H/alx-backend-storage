@@ -31,19 +31,20 @@ git clone https://github.com/G-omar-H/0x02-redis_basic.git
 ## Usage
 
 Run the provided examples or test your implementations using the main files or create your own scripts.
-Tasks
 
-    Writing strings to Redis: Store data in Redis using Python.
+## Tasks
 
-    Reading from Redis and recovering original type: Retrieve data from Redis and convert it back to its original type.
+   0. Writing strings to Redis: Store data in Redis using Python.
 
-    Incrementing values: Implement a system to count how many times methods of the Cache class are called.
+   1. Reading from Redis and recovering original type: Retrieve data from Redis and convert it back to its original type.
 
-    Storing lists: Store the history of inputs and outputs for a particular function in Redis.
+   2. Incrementing values: Implement a system to count how many times methods of the Cache class are called.
 
-    Retrieving lists: Display the history of calls of a particular function.
+   3. Storing lists: Store the history of inputs and outputs for a particular function in Redis.
 
-    Implementing an expiring web cache and tracker: Create a web cache with an expiration time and track URL access counts.
+   4. Retrieving lists: Display the history of calls of a particular function.
+
+   5. Implementing an expiring web cache and tracker: Create a web cache with an expiration time and track URL access counts.
 
 ## Contributing
 
